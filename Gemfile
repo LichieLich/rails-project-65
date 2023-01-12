@@ -71,6 +71,7 @@ group :development do
   # gem "spring"
 
   gem 'rubocop'
+  gem 'rubocop-rails'
 end
 
 group :test do
@@ -79,4 +80,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'rubocop'
+  gem 'rubocop-rails'
 end

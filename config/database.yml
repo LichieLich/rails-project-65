@@ -20,6 +20,15 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV.fetch("PGDATABASE") %>
+  pool: 5
+  username: <%= ENV.fetch("PGUSER") %>
+  password: <%= ENV.fetch("PGPASSWORD") %>
+  port: <%= ENV.fetch("PGPORT") %>
+  host: <%= ENV.fetch("PGDATABASE") %>

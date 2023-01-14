@@ -8,6 +8,7 @@ setup:
 	bin/setup
 	bin/rails db:fixtures:load
 	npx simple-git-hooks
+	cp .env.example .env
 
 lint-code:
 	bundle exec rubocop

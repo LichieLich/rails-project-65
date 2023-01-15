@@ -7,12 +7,12 @@ module Web
       user_info = request.env['omniauth.auth']
       # raise user_info # Your own session management should be placed here.
       # binding.irb
-      p 'req'
+      raise 'req'
     end
 
     def callback
       # binding.irb
-      p 'callback'
+      raise 'callback'
     end
   end
 end

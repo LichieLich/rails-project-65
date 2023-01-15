@@ -1,0 +1,5 @@
+.container
+  header.d-flex.flex-wrap.align-items-center.justify-content-between.justify-content-md-between.py-3.mb-4.border-bottom
+    ul.nav.nav-pills
+      nav_menu_item = link_to t('navigation.links.home'), root_path, class: 'nav-link'
+      nav_menu_item = button_to t('navigation.links.log_in'), auth_request_url, method: :post, class: 'nav-link'

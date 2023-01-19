@@ -2,6 +2,8 @@
 
 module Web
   class HomeController < Web::ApplicationController
-    def index; end
+    def index
+      @user_info = $user_info
+    end
   end
 end

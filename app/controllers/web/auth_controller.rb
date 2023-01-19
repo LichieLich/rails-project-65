@@ -7,6 +7,7 @@ module Web
 
     def callback
       user_info = request.env['omniauth.auth']
+      $user_info = user_info
     end
   end
 end

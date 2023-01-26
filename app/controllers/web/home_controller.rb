@@ -3,7 +3,7 @@
 module Web
   class HomeController < Web::ApplicationController
     def index
-      @user_info = $user_info
+      @user = User.find_by(id: session[:user_id])
     end
   end
 end

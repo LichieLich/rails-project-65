@@ -1,0 +1,15 @@
+.container
+  = simple_form_for bulletin do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+    = f.input :title
+    = f.association :category, as: :select, prompt: t('simple_form.prompts.bulletins.select_category')
+    = f.input :description, as: :text
+
+    - if bulletin.image_attachment
+      = image_tag bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
+    .field
+      = f.file_field :image
+
+    = f.button :submit, class: 'btn btn-primary mt-2'

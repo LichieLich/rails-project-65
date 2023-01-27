@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
     get 'auth/logout', to: 'auth#logout'
 
+    resources :bulletins, only: %i[new create destroy show edit update]
+
+    resources :categories, only: %i[new create destroy]
+
     root 'home#index'
   end
 end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class Category < ApplicationRecord
   has_many :bulletins, dependent: :destroy
+
+  validates :name, presence: true
 end

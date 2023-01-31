@@ -1,0 +1,7 @@
+ru:
+  bulletins:
+    params:
+      created: '%{created} назад'
+      title: 'Название'
+    title:
+      new: 'Создание нового объявления'

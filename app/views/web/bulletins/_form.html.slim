@@ -2,14 +2,19 @@
   = simple_form_for bulletin do |f|
     = f.error_notification
     = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-    = f.input :title
-    = f.association :category, as: :select, prompt: t('simple_form.prompts.bulletins.select_category')
-    = f.input :description, as: :text
-
-    - if bulletin.image_attachment
-      = image_tag bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
-    .field
-      = f.file_field :image
-
-    = f.button :submit, class: 'btn btn-primary mt-2'
+    .form-group
+      .d-flex.flex-column.justify-content-center
+        .form-group.mb-3
+          = f.input :title, input_html: { class: 'from-control col-3' },
+          label_html: { class: 'col-form-label' }
+        .form-group.mb-3
+          = f.association :category, as: :select, prompt: t('simple_form.prompts.bulletins.select_category')
+        .form-group.mb-3
+          = f.input :description, as: :text, input_html: { class: 'col-3' }
+        .form-group.file.mb-3
+          - if bulletin.image_attachment
+            = image_tag bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2 form-control-file'
+          .field
+            = f.file_field :image
+        .form-actions.mb-3
+          = f.button :submit, class: 'btn btn-primary mt-2'

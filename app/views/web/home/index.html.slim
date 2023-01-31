@@ -8,6 +8,8 @@
           - @bulletins.each do |bulletin|
             .col-3.pt-2
               .card.shadow-sm
+                - if bulletin.image_attachment
+                  = image_tag(bulletin.image.variant(resize_to_fit: [200, 200]), class: 'img-fluid')
                 .card-body
                   = link_to bulletin.title, bulletin_path(bulletin), class: 'me-2'
                   br

@@ -10,4 +10,4 @@
             = image_tag(@bulletin.image.variant(resize_to_fit: [600, 600]), class: 'img-fluid')
             br
             - if @bulletin.user.id == current_user.id
-              = link_to 'Удалитьь', bulletin_path(@bulletin), data: { confirm: t('bulletins.links.destroy_confirmation') },  method: :delete, class: 'text-danger'
+              = button_to 'Удалитьь', bulletin_url(@bulletin), data: { turbo_confirm: t('bulletins.links.destroy_confirmation') }, method: :delete, class: 'text-danger'

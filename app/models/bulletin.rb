@@ -4,7 +4,7 @@ class Bulletin < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
   validates :image, attached: true,
                     content_type: %i[png jpg jpeg],
                     size: { less_than: 5.megabytes }

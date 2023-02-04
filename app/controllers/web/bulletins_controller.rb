@@ -43,6 +43,10 @@ module Web
       redirect_to root_path, notice: t('.success')
     end
 
+    def index
+      @bulletins = Bulletin.all.order(created_at: :desc)
+    end
+
     private
 
     # Only allow a list of trusted parameters through.

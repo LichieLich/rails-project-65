@@ -57,13 +57,11 @@ gem 'omniauth-rails_csrf_protection'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
-
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'file_validators'
 gem 'image_processing'
-
-gem 'rack-cors'
+gem 'pundit'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

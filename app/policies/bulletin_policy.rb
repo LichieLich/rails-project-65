@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-class BulletinPolicy
+class BulletinPolicy < ApplicationPolicy
   attr_reader :user, :bulletin
 
   def initialize(user, bulletin)
+    super
     @user = user
     @bulletin = bulletin
   end

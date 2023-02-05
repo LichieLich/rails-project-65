@@ -2,7 +2,7 @@
 
 module Web
   class CategoriesController < ApplicationController
-    before_action do 
+    before_action do
       authorize Category
     end
 
@@ -43,7 +43,7 @@ module Web
 
     def destroy
       @category = Category.find(params[:id])
-      
+
       @category.destroy
       redirect_to admin_categories_path, notice: t('.success')
     end

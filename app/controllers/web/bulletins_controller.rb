@@ -6,6 +6,10 @@ module Web
       authorize Bulletin
     end
 
+    def index
+      @bulletins = Bulletin.all.order(created_at: :desc)
+    end
+
     def show
       @bulletin = Bulletin.find(params[:id])
     end
@@ -40,13 +44,9 @@ module Web
 
     def destroy
       @bulletin = helpers.current_user.bulletins.find(params[:id])
-      
+
       @bulletin.destroy
       redirect_to root_path, notice: t('.success')
-    end
-
-    def index
-      @bulletins = Bulletin.all.order(created_at: :desc)
     end
 
     def admin_index

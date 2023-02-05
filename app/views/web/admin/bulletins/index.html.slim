@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-3
+      == render partial: 'web/admin/nav_panel', locals: {active_page: 'bulletins'}
+    .col-md-9
+      h2 Все объявления
+      table.table.table-hover.mb-5
+        thead
+          tr 
+            th Название
+            th Состояние
+            th Дата публикации
+            th Дейсвтия
+        tbody
+          - @bulletins.each do |bulletin|
+            tr
+              td = link_to bulletin.title, bulletin
+              td Тут будет статус
+              td = t('bulletins.params.created', created: time_ago_in_words(bulletin.created_at))
+              td.d-flex 
+                .me-4 = link_to 'Показать', bulletin
+                .me-4.text-danger = 'Архивировать'

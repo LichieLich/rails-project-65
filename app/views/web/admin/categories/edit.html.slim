@@ -1,0 +1,8 @@
+.container
+  .row
+    .col-md-3
+      == render partial: 'web/admin/nav_panel', locals: {active_page: ''}
+    .col-md-9
+      h2 = t('categories.name.edit')
+      == render partial: 'web/admin/categories/form', locals: { category: @category }
+      = link_to t('categories.links.back'), :back, class: 'm-2'

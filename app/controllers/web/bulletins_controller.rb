@@ -2,7 +2,9 @@
 
 module Web
   class BulletinsController < ApplicationController
-    before_action :authenticate!, only: %i[new create destroy update edit]
+    before_action only: %i[new create destroy update edit admin_index] do
+      authorize Bulletin
+    end
 
     def show
       @bulletin = Bulletin.find(params[:id])
@@ -45,6 +47,11 @@ module Web
 
     def index
       @bulletins = Bulletin.all.order(created_at: :desc)
+    end
+
+    def admin_index
+      @bulletins = Bulletin.all.order(created_at: :desc)
+      render 'web/admin/bulletins/index'
     end
 
     private

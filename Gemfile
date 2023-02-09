@@ -54,6 +54,7 @@ gem 'bootsnap', require: false
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'aasm'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'file_validators'

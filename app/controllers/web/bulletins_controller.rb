@@ -68,7 +68,7 @@ module Web
       authorize @bulletin
       @bulletin.archive!
 
-      redirect_back(fallback_location: :root, notice: 'Объявление отправлено в архив')
+      redirect_back(fallback_location: :root, notice: t('.success'))
     end
 
     def publish
@@ -76,7 +76,7 @@ module Web
       authorize @bulletin
       @bulletin.publish!
 
-      redirect_back(fallback_location: :root, notice: 'Объявление опубликовано')
+      redirect_back(fallback_location: :root, notice: t('.success'))
     end
 
     def reject
@@ -84,7 +84,7 @@ module Web
       authorize @bulletin
       @bulletin.reject!
 
-      redirect_back(fallback_location: :root, notice: 'Объявление отклонено')
+      redirect_back(fallback_location: :root, notice: t('.success'))
     end
 
     def send_to_moderation
@@ -92,7 +92,7 @@ module Web
       authorize @bulletin
       @bulletin.moderate!
 
-      redirect_back(fallback_location: :root, notice: 'Объявление отправлено на модерацию')
+      redirect_back(fallback_location: :root, notice: t('.success'))
     end
 
     private

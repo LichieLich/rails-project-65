@@ -6,6 +6,6 @@
           .mb-4
             h2 Мои Объявления
             hr
-          = link_to 'Добавить объявление', new_bulletin_path 
-          .row.mt-2 
+          = link_to 'Добавить объявление', new_bulletin_path
+          .row.mt-2
             == render partial: 'table', locals: { bulletins: @bulletins }

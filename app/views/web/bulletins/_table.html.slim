@@ -1,6 +1,6 @@
 table.table.table-hover.mb-5
         thead
-          tr 
+          tr
             th Название
             th Состояние
             th Дата публикации
@@ -11,7 +11,7 @@ table.table.table-hover.mb-5
               td = link_to bulletin.title, bulletin
               td = bulletin.aasm.human_state
               td = t('bulletins.params.created', created: time_ago_in_words(bulletin.created_at))
-              td.d-flex 
+              td.d-flex
                 .me-4 = link_to 'Показать', bulletin
                 - if bulletin.user_id == current_user&.id
                   = link_to 'Редактировать', edit_bulletin_path(bulletin), class: 'me-2'

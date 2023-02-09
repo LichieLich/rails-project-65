@@ -9,8 +9,12 @@ class BulletinPolicy < ApplicationPolicy
     @bulletin = bulletin
   end
 
-  def new?
+  def index?
     true
+  end
+
+  def new?
+    user.present?
   end
 
   def create?
@@ -18,7 +22,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def edit?
-    bulletin.user == user
+    bulletin.user_id == user.id
   end
 
   def update?
@@ -31,5 +35,25 @@ class BulletinPolicy < ApplicationPolicy
 
   def admin_index?
     user.admin?
+  end
+
+  def profile?
+    user.present?
+  end
+
+  def archive?
+    bulletin.user_id == user.id || user.admin?
+  end
+
+  def publish?
+    user.admin?
+  end
+
+  def reject?
+    publish?
+  end
+
+  def send_to_moderation?
+    create?
   end
 end

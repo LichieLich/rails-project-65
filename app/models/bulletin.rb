@@ -15,8 +15,11 @@ class Bulletin < ApplicationRecord
   validates :description, length: { maximum: 1000 }
 
   aasm whiny_transitions: false do
-    state :draft, initial: true
-    state :under_moderation, :published, :rejected, :archived
+    state :draft, initial: true, display: 'Черновик'
+    state :under_moderation, display: 'На модерации'
+    state :published, display: 'Опубликовано'
+    state :rejected, display: 'Отклонено'
+    state :archived, display: 'В архиве'
 
     event :moderate do
       transitions from: %i[draft rejected], to: :under_moderation
@@ -32,6 +35,10 @@ class Bulletin < ApplicationRecord
 
     event :archive do
       transitions from: %i[draft under_moderation published rejected], to: :archived
+    end
+
+    event :draft do
+      transitions from: %i[under_moderation published rejected], to: :draft
     end
   end
 end

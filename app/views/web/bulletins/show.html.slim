@@ -9,5 +9,9 @@
           - if @bulletin.image_attachment
             = image_tag(@bulletin.image.variant(resize_to_fit: [400, 400]), class: 'img-fluid')
             br
-            - if current_user && @bulletin.user.id == current_user.id
+            - if @bulletin.user.id == current_user&.id
+              - if @bulletin.may_moderate?
+                  = button_to 'На модерацию', moderation_bulletin_path(@bulletin), method: :patch, class: 'me-2'
+              - if @bulletin.may_archive?
+                = button_to 'Архивировать', archive_bulletin_path(@bulletin), method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: 'Вы уверены?' } }
               = button_to 'Удалитьь', bulletin_url(@bulletin), data: { turbo_confirm: t('bulletins.links.destroy_confirmation') }, method: :delete, class: 'text-danger'

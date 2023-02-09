@@ -5,7 +5,7 @@
         .mb-4
           h2 Объявления
         .row.mt-2
-          - @bulletins.each do |bulletin|
+          - @bulletins&.each do |bulletin|
             .col-3.pt-2
               .card.shadow-sm
                 - if bulletin.image_attachment

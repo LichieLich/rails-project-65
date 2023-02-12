@@ -56,7 +56,9 @@ module Web
     end
 
     def admin_index
-      @bulletins = Bulletin.all.order(created_at: :desc).page params[:paage]
+      @q = Bulletin.all.includes(:category).ransack(params[:q])
+      @bulletins = @q.result.order(created_at: :desc).page params[:page]
+
       render 'web/admin/bulletins/index'
     end
 

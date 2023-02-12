@@ -1,0 +1,13 @@
+= search_form_for query, url: request.path do |f|
+  .row.my-2
+    .col-6
+      .form-group.mb-3
+        = f.search_field :title_cont, class: 'form-control'
+        = f.label :title_cont, 'Поиск по названию', class: 'small form-text text-muted'
+    .col-3
+      .mb-3.form-group.select
+        = f.select(:aasm_state_eq,  Bulletin.aasm.states.map(&:name), { include_blank: true }, class: 'form-control')
+        = f.label :category_name_eq, 'Выбрать статус', class: 'small form-text text-muted'
+    .col-3
+      = f.submit 'Поиск', class: 'btn btn-primary me-2'
+      = link_to 'Сброс', url_for, class: 'btn btn-outline-primary'

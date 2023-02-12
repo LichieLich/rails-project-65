@@ -112,7 +112,7 @@ ru:
         one: "%{count} день"
         few: "%{count} дня"
         many: "%{count} дней"
-        other: "%{count} дня"
+        other: "%{count} дней"
       x_months:
         one: "%{count} месяц"
         few: "%{count} месяца"

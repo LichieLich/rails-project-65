@@ -1,26 +1,27 @@
 table.table.table-hover.mb-5
-        thead
-          tr
-            th Название
-            th Состояние
-            th Дата публикации
-            th Дейсвтия
-        tbody
-          - bulletins&.each do |bulletin|
-            tr
-              td = link_to bulletin.title, bulletin
-              td = bulletin.aasm.human_state
-              td = t('bulletins.params.created', created: time_ago_in_words(bulletin.created_at))
-              td.d-flex
-                .me-4 = link_to 'Показать', bulletin
-                - if bulletin.user_id == current_user&.id
-                  = link_to 'Редактировать', edit_bulletin_path(bulletin), class: 'me-2'
-                  - if bulletin.may_moderate?
-                    = button_to 'На модерацию', moderation_bulletin_path(bulletin), method: :patch, class: 'me-2'
-                - if bulletin.may_archive?
-                  = button_to 'Архивировать', archive_bulletin_path(bulletin), method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: 'Вы уверены?' } }
-                - if current_user.admin?
-                  - if bulletin.may_reject?
-                    = button_to 'Отклонить', reject_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
-                  - if bulletin.may_publish?
-                    = button_to 'Опубликовать', publish_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
+  thead
+    tr
+      th Название
+      th Состояние
+      th Дата публикации
+      th Дейсвтия
+  tbody
+    - bulletins&.each do |bulletin|
+      tr
+        td = link_to bulletin.title, bulletin
+        td = bulletin.aasm.human_state
+        td = t('bulletins.params.created', created: time_ago_in_words(bulletin.created_at))
+        td.d-flex
+          .me-4 = link_to 'Показать', bulletin
+          - if bulletin.user_id == current_user&.id
+            = link_to 'Редактировать', edit_bulletin_path(bulletin), class: 'me-2'
+            - if bulletin.may_moderate?
+              = button_to 'На модерацию', moderation_bulletin_path(bulletin), method: :patch, class: 'me-2'
+          - if bulletin.may_archive?
+            = button_to 'Архивировать', archive_bulletin_path(bulletin), method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: 'Вы уверены?' } }
+          - if current_user.admin?
+            - if bulletin.may_reject?
+              = button_to 'Отклонить', reject_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
+            - if bulletin.may_publish?
+              = button_to 'Опубликовать', publish_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
+= paginate bulletins

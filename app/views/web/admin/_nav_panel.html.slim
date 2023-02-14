@@ -1,3 +1,4 @@
   nav.flex-column.nav-pills
+    nav_menu_item = link_to 'Объявления на модерации', admin_path, class: "nav-link link-dark #{'active' if active_page == 'under_moderation'}"
     nav_menu_item = link_to 'Все объявления', admin_bulletins_path, class: "nav-link link-dark #{'active' if active_page == 'bulletins'}"
     nav_menu_item = link_to 'Все категории', admin_categories_path, class: "nav-link link-dark #{'active' if active_page == 'categories'}"

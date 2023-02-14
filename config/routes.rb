@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :categories, only: %i[index new create destroy edit update]
       resources :bulletins, only: %i[show]
       get 'bulletins', to: 'bulletins#admin_index'
+      get '/', to: 'bulletins#bulletins_under_moderation'
     end
 
     root 'bulletins#index'

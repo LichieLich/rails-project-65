@@ -62,6 +62,11 @@ module Web
       render 'web/admin/bulletins/index'
     end
 
+    def bulletins_under_moderation
+      @bulletins = Bulletin.where(aasm_state: 'under_moderation').order(created_at: :desc).page(params[:page]).per(20)
+      render 'web/admin/bulletins/bulletins_under_moderation'
+    end
+
     def profile
       @q = Bulletin.includes(:category).ransack(params[:q])
       @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
@@ -105,9 +110,5 @@ module Web
     def bulletin_params
       params.require(:bulletin).permit(:title, :description, :category_id, :image)
     end
-
-    # def authenticate!
-    #   raise ActionController::RoutingError, 'Not Found' unless helpers.current_user
-    # end
   end
 end

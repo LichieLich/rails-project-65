@@ -13,7 +13,7 @@
                   = f.label :title_cont, 'Поиск по названию', class: 'small form-text text-muted'
               .col-4
                 .mb-3.form-group.select
-                  = f.select(:category_name_eq,  Category.all.map(&:name), { include_blank: true }, class: 'form-control')
+                  = f.select(:category_name_eq, Category.all.map(&:name), { include_blank: true }, class: 'form-control')
                   = f.label :category_name_eq, 'Выбрать категорию', class: 'small form-text text-muted'
               .col-2
                 = f.submit 'Поиск', class: 'btn btn-primary me-2'

@@ -4,6 +4,7 @@
       .p-3.p-lg-5.pt-lg-0
         .mb-4
           h2 Объявления
+          = paginate @bulletins
         .p-3.bg-light
           = search_form_for @q do |f|
             .row.my-2
@@ -23,8 +24,9 @@
             .col-3.pt-2
               .card.shadow-sm
                 - if bulletin.image_attachment
-                  = image_tag(bulletin.image.variant(resize_to_fit: [200, 200]), class: 'img-fluid')
+                  = image_tag(bulletin.image.variant(resize_to_fill: [200, 200]), class: 'img-fluid')
                 .card-body
                   = link_to bulletin.title, bulletin_path(bulletin), class: 'me-2'
                   br
                   small = t('bulletins.params.created', created: time_ago_in_words(bulletin.created_at))
+        = paginate @bulletins

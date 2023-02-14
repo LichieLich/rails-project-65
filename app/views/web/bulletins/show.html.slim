@@ -4,11 +4,14 @@
       .p-3.p-lg-5.pt-lg-0
         .mb-4
           h2 = @bulletin.title
+          hr
           h4 = "Продавец: #{@bulletin.user.name}"
         .row
           - if @bulletin.image_attachment
-            = image_tag(@bulletin.image.variant(resize_to_fit: [400, 400]), class: 'img-fluid')
+            .col-8
+              = image_tag(@bulletin.image.variant(resize_to_fill: [400, 400]), class: 'img-thumbnail mb-2')
             br
+            p = @bulletin.description
             - if @bulletin.user.id == current_user&.id
               - if @bulletin.may_moderate?
                   = button_to 'На модерацию', moderation_bulletin_path(@bulletin), method: :patch, class: 'me-2'

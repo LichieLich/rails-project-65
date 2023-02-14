@@ -1,8 +1,24 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+require 'open-uri'
+
+Faker::Config.locale = :ru
+
+10.times do
+  User.create(name: Faker::Name.name, email: Faker::Internet.unique.email, admin: false)
+end
+
+5.times do
+  Category.create(name: Faker::Beer.style)
+end
+
+50.times do
+  bulletin = Bulletin.new
+  bulletin.title = Faker::Beer.brand
+  bulletin.description = Faker::ChuckNorris.fact if rand > 0.25
+  bulletin.image.attach(io: URI.open(Faker::LoremFlickr.image), filename: 'image.jpg', content_type: 'image/jpg')
+  bulletin.user = User.order(Arel.sql('RANDOM()')).first
+  bulletin.category = Category.order(Arel.sql('RANDOM()')).first
+  bulletin.aasm_state = %w[draft under_moderation published rejected archived].sample
+  bulletin.save
+end

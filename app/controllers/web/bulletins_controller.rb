@@ -8,7 +8,7 @@ module Web
 
     def index
       @q = Bulletin.ransack(params[:q])
-      @bulletins = @q.result.where(aasm_state: 'published').order(created_at: :desc)
+      @bulletins = @q.result.where(aasm_state: 'published').order(created_at: :desc).page(params[:page]).per(20)
     end
 
     def show
@@ -57,14 +57,14 @@ module Web
 
     def admin_index
       @q = Bulletin.all.includes(:category).ransack(params[:q])
-      @bulletins = @q.result.order(created_at: :desc).page params[:page]
+      @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
 
       render 'web/admin/bulletins/index'
     end
 
     def profile
       @q = Bulletin.includes(:category).ransack(params[:q])
-      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(3)
+      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
     end
 
     def archive

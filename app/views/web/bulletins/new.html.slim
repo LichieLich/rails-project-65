@@ -3,6 +3,6 @@
     .p-4.align-items-center.border.shadow.bg-white.rounded-3
       .row
         .p-3.p-lg-5.pt-lg-0
-          h1.mb-4 = t('web.bulletins.title.new')
+          h1.mb-4 = t('bulletins.title.new')
           == render partial: 'form', locals: { bulletin: @bulletin }
           = link_to t('bulletins.links.back'), :back, class: 'm-2'

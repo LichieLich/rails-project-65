@@ -7,7 +7,7 @@ module Web
     end
 
     def index
-      @q = Bulletin.ransack(params[:q])
+      @q = Bulletin.includes(:image_attachment).ransack(params[:q])
       @bulletins = @q.result.where(aasm_state: 'published').order(created_at: :desc).page(params[:page]).per(20)
     end
 

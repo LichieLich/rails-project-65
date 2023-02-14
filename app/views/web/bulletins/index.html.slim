@@ -3,7 +3,7 @@
     .row
       .p-3.p-lg-5.pt-lg-0
         .mb-4
-          h2 Объявления
+          h2 = t('bulletins.index.page_title')
           = paginate @bulletins
         .p-3.bg-light
           = search_form_for @q do |f|
@@ -11,14 +11,14 @@
               .col-6
                 .mb-3.form-group
                   = f.search_field :title_cont, class: 'form-control'
-                  = f.label :title_cont, 'Поиск по названию', class: 'small form-text text-muted'
+                  = f.label :title_cont, t('bulletins.index.search_panel.title'), class: 'small form-text text-muted'
               .col-4
                 .mb-3.form-group.select
                   = f.select(:category_name_eq, Category.all.map(&:name), { include_blank: true }, class: 'form-control')
-                  = f.label :category_name_eq, 'Выбрать категорию', class: 'small form-text text-muted'
+                  = f.label :category_name_eq, t('bulletins.index.search_panel.category'), class: 'small form-text text-muted'
               .col-2
-                = f.submit 'Поиск', class: 'btn btn-primary me-2'
-                = link_to 'Сброс', url_for, class: 'btn btn-outline-primary'
+                = f.submit t('bulletins.index.search_panel.search_button'), class: 'btn btn-primary me-2'
+                = link_to t('bulletins.index.search_panel.reset_button'), url_for, class: 'btn btn-outline-primary'
         .row.mt-2
           - @bulletins&.each do |bulletin|
             .col-3.pt-2

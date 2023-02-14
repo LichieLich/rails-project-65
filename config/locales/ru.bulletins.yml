@@ -1,5 +1,12 @@
 ru:
   bulletins:
+    index:
+      page_title: Объявления
+      search_panel:
+        category: Выбрать категорию
+        reset_button: Сброс
+        search_button: Поиск
+        title: Поиск по названию
     params:
       created: '%{created} назад'
       title: 'Название'

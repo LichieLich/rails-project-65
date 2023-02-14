@@ -61,11 +61,11 @@ gem 'file_validators'
 gem 'image_processing'
 gem 'kaminari'
 gem 'pundit'
+gem 'ransack'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim_lint'
 gem 'slim-rails'
-gem 'ransack'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

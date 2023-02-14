@@ -24,5 +24,4 @@ table.table.table-hover.mb-5
               = button_to 'Отклонить', reject_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
             - if bulletin.may_publish?
               = button_to 'Опубликовать', publish_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
-== paginate bulletins, window: 2
-= link_to_next_page bulletins, 'dsfdsf'
+= paginate bulletins

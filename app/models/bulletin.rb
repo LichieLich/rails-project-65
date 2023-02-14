@@ -43,10 +43,10 @@ class Bulletin < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    super & %w(title aasm_state)
+    super & %w[title aasm_state]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    super & %w(category)
+    super & %w[category]
   end
 end

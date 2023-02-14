@@ -64,7 +64,7 @@ module Web
 
     def profile
       @q = Bulletin.includes(:category).ransack(params[:q])
-      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page params[:page]
+      @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(3)
     end
 
     def archive

@@ -4,9 +4,9 @@
       .row
         .p-3.p-lg-5.pt-lg-0
           .mb-4
-            h2 Мои Объявления
+            h2 = t('bulletins.title.profile')
             hr
-          = link_to 'Добавить объявление', new_bulletin_path
+          = link_to t('bulletins.links.create'), new_bulletin_path
           == render partial: 'search_form', locals: { query: @q }
           .row.mt-2
             == render partial: 'table', locals: { bulletins: @bulletins }

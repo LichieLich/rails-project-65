@@ -1,22 +1,43 @@
 ru:
   bulletins:
+    admin_nav:
+      links:
+        admin_index: Все объявления
+        categories: Все категории
+        under_moderation: Объявления на модерации
     links:
+      archive: В архив
       back: Назад
+      create: Добавить объявление
+      destroy: Удалить
+      edit: Редактировать
+      publish: Опубликовать
+      reject: Отклонить
+      show: Показать
+      to_moderation: На модерацию
     params:
       created: '%{created} назад'
       title: Название
     title:
-      new: Создание нового объявления
+      admin_index: Все объявления
       edit: Редактирование объявления
+      new: Создание нового объявления
+      profile: Мои объявления
+      show:
+        owner: 'Продавец %{owner}'
+      under_moderation: Объявления на модерации
     archive:
+      confirm: Вы уверены?
       success: Объявление отправлено в архив
     create:
       success: Объявление успешно создано
     destroy:
+      confirm: Вы уверены?
       success: Объявление удалено навсегда!
     publish:
       success: Объявление успешно опубликовано
     reject:
+      confirm: Вы уверены?
       success: Объявление отклонено
     send_to_moderation:
       success: Объявление отправлено на модерацию

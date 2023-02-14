@@ -1,0 +1,7 @@
+ru:
+  bulletins:
+    search_form:
+      reset_button: Сброс
+      search_button: Поиск
+      status: Выбрать статус
+      title: Поиск по названию

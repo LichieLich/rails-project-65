@@ -1,0 +1,8 @@
+ru:
+  bulletins:
+    table:
+      head:
+        actions: Дейсвтия
+        created: Дата публикации
+        status: Состояние
+        title: Название

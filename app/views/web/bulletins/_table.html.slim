@@ -1,10 +1,10 @@
 table.table.table-hover.mb-5
   thead
     tr
-      th Название
-      th Состояние
-      th Дата публикации
-      th Дейсвтия
+      th = t('bulletins.table.head.title')
+      th = t('bulletins.table.head.status')
+      th = t('bulletins.table.head.created')
+      th = t('bulletins.table.head.actions')
   tbody
     - bulletins&.each do |bulletin|
       tr
@@ -12,16 +12,16 @@ table.table.table-hover.mb-5
         td = bulletin.aasm.human_state
         td = t('bulletins.params.created', created: time_ago_in_words(bulletin.created_at))
         td.d-flex
-          .me-4 = link_to 'Показать', bulletin
+          .me-4 = link_to t('bulletins.links.show'), bulletin
           - if bulletin.user_id == current_user&.id
-            = link_to 'Редактировать', edit_bulletin_path(bulletin), class: 'me-2'
+            = link_to t('bulletins.links.edit'), edit_bulletin_path(bulletin), class: 'me-2'
             - if bulletin.may_moderate?
-              = button_to 'На модерацию', moderation_bulletin_path(bulletin), method: :patch, class: 'me-2'
+              = button_to t('bulletins.links.to_moderation'), moderation_bulletin_path(bulletin), method: :patch, class: 'me-2'
           - if bulletin.may_archive?
-            = button_to 'Архивировать', archive_bulletin_path(bulletin), method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: 'Вы уверены?' } }
+            = button_to t('bulletins.links.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: t('bulletins.archive.confirm') } }
           - if current_user.admin?
             - if bulletin.may_reject?
-              = button_to 'Отклонить', reject_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
+              = button_to t('bulletins.links.reject'), reject_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: t('bulletins.reject.confirm') } }
             - if bulletin.may_publish?
-              = button_to 'Опубликовать', publish_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: 'Вы уверены?' } }
+              = button_to t('bulletins.links.publish'), publish_bulletin_path(bulletin), method: :patch, class: 'me-2', form: { data: { turbo_confirm: t('bulletins.publish.confirm') } }
 = paginate bulletins

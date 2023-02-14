@@ -1,0 +1,10 @@
+ru:
+  navigation:
+    hello: 'Привет, %{user_name}'
+    links:
+      admin_panel: Панель администратора
+      home: Все объявления
+      profile: Мои объявления
+      create_bulletin: Создать объявление
+      log_in: Войти
+      log_out: Выйти

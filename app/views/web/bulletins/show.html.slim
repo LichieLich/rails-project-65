@@ -16,5 +16,7 @@
               - if @bulletin.may_moderate?
                   = button_to t('bulletins.links.to_moderation'), moderation_bulletin_path(@bulletin), method: :patch, class: 'me-2'
               - if @bulletin.may_archive?
-                = button_to t('bulletins.links.archive'), archive_bulletin_path(@bulletin), method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: t('bulletins.archive.confirm') } }
-              = button_to t('bulletins.links.destroy'), bulletin_url(@bulletin), data: { turbo_confirm: t('bulletins.destroy.confirm') }, method: :delete, class: 'text-danger'
+                = button_to t('bulletins.links.archive'), archive_bulletin_path(@bulletin),
+                  method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: t('bulletins.archive.confirm') } }
+              = button_to t('bulletins.links.destroy'), bulletin_url(@bulletin),
+                data: { turbo_confirm: t('bulletins.destroy.confirm') }, method: :delete, class: 'text-danger'

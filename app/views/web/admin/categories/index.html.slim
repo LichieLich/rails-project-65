@@ -18,4 +18,5 @@
               td = category.name
               td.d-flex
                 .me-1 = link_to t('categories.links.edit'), edit_admin_category_path(category)
-                .me-1.text-danger = button_to t('categories.links.destroy'), admin_category_path(category), method: :delete, data: { confirm: t('categories.destroy.confirm') }, class: 'link'
+                .me-1.text-danger = button_to t('categories.links.destroy'), admin_category_path(category),
+                  method: :delete, data: { confirm: t('categories.destroy.confirm') }, class: 'link'

@@ -6,4 +6,3 @@
       h2 = t('bulletins.title.admin_index')
       == render partial: 'search_form', locals: { query: @q }
       == render partial: 'table', locals: { bulletins: @bulletins }
-      = paginate @bulletins

@@ -1,0 +1,11 @@
+ru:
+  categories:
+    links:
+      back: Назад
+      destroy: Удалить
+      edit: Редактировать
+      new: Добавить категорию
+    titles:
+      index: Категории
+    destroy:
+      confirm: Точно удалить?

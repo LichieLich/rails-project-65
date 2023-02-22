@@ -1,0 +1,7 @@
+ru:
+  categories:
+    table:
+      head:
+        actions: Дейсвтия
+        id: ID
+        name: Назвиние

@@ -5,6 +5,8 @@ ru:
       category: категорию
     attributes:
       bulletin:
+        aasm_state:
+          draft: Черновик
         category: Категория
         description: Описание
         title: Название

@@ -3,19 +3,19 @@
     .col-md-3
       == render partial: 'web/admin/nav_panel', locals: { active_page: 'categories' }
     .col-md-9
-      h2 Категории
-      = link_to 'Добавить категорию', new_admin_category_path
+      h2 = t('categories.titles.index')
+      = link_to t('categories.links.new'), new_admin_category_path
       table.table.table-hover.mb-5
         thead
           tr
-            th ID
-            th Название
-            th Дейсвтия
+            th = t('categories.table.head.id')
+            th = t('categories.table.head.name')
+            th = t('categories.table.head.actions')
         tbody
           - @categories.each do |category|
             tr
               td = category.id
               td = category.name
               td.d-flex
-                .me-1 = link_to 'Редактировать', edit_admin_category_path(category)
-                .me-1.text-danger = button_to 'Удалить', admin_category_path(category), method: :delete, data: { confirm: 'Точно удалить?' }, class: 'link'
+                .me-1 = link_to t('categories.links.edit'), edit_admin_category_path(category)
+                .me-1.text-danger = button_to t('categories.links.destroy'), admin_category_path(category), method: :delete, data: { confirm: t('categories.destroy.confirm') }, class: 'link'

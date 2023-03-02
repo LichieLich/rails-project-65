@@ -56,4 +56,8 @@ class BulletinPolicy < ApplicationPolicy
   def send_to_moderation?
     create?
   end
+
+  def bulletins_under_moderation?
+    user.admin?
+  end
 end

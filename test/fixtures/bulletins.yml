@@ -5,9 +5,11 @@ one:
   description: MyText
   user: one
   category: one
+  aasm_state: draft
 
 two:
-  title: MyString
-  description: MyText
+  title: MyString2
+  description: MyText2
   user: two
   category: two
+  aasm_state: draft

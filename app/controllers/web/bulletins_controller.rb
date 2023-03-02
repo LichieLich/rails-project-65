@@ -2,7 +2,7 @@
 
 module Web
   class BulletinsController < ApplicationController
-    before_action only: %i[new create admin_index profile] do
+    before_action only: %i[new create admin_index profile bulletins_under_moderation] do
       authorize Bulletin
     end
 

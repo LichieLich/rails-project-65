@@ -3,6 +3,7 @@ ci-setup:
 	RAILS_ENV=test bundle install --without production development
 	chmod u+x bin/rails
  	bin/rails db:prepare
+	bin/rails assets:precompile
 
 setup:
 	bin/setup

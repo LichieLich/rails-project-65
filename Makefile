@@ -1,5 +1,6 @@
 ci-setup:
 	yarn install
+	yarn build:css
 	RAILS_ENV=test bundle install --without production development
 	chmod u+x bin/rails
  	bin/rails db:prepare

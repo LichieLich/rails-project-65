@@ -16,6 +16,8 @@ module RailsProject65
     config.i18n.default_locale = :ru
     config.i18n.locale = :ru
 
+    Rails.application.config.active_storage.variant_processor = :mini_magick
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -376,7 +376,6 @@ DEPENDENCIES
   rollbar
   rubocop
   rubocop-rails
-  ruby-vips
   selenium-webdriver
   simple_form
   slim-rails

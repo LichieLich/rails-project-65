@@ -35,6 +35,7 @@ ru:
       confirm: Вы уверены?
       success: Объявление удалено навсегда!
     publish:
+      confirm: Вы уверены?
       success: Объявление успешно опубликовано
     reject:
       confirm: Вы уверены?

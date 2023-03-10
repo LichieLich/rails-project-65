@@ -2,6 +2,9 @@ name: Code Check
 
 env:
   PGDATABASE: notused
+  PGUSER: notused
+  PGPASSWORD: notused
+  PGPORT: notused
 
 on:
   pull_request:

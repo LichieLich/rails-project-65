@@ -1,5 +1,8 @@
 name: Code Check
 
+env:
+  PGDATABASE: notused
+
 on:
   pull_request:
     branches:

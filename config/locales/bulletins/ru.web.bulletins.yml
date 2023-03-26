@@ -9,11 +9,6 @@ ru:
       destroy:
         confirm: Вы уверены?
         success: Объявление удалено навсегда!
-      publish:
-        success: Объявление успешно опубликовано
-      reject:
-        confirm: Вы уверены?
-        success: Объявление отклонено
       send_to_moderation:
         success: Объявление отправлено на модерацию
       update:

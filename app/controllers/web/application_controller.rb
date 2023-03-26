@@ -5,7 +5,7 @@ module Web
     include Pundit::Authorization
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id])
+      @current_user ||= User.find_by(email: session[:user_email])
     end
   end
 end

@@ -6,9 +6,9 @@ one:
 
 two:
   name: MyString
-  email: MyString
+  email: MyString2
 
 admin:
   name: AdminUser
-  email: MyString
+  email: MyString3
   admin: true

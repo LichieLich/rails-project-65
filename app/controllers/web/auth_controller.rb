@@ -4,17 +4,18 @@ module Web
   class AuthController < Web::ApplicationController
     def callback
       @user_info = request.env['omniauth.auth']
-      session[:user_id] = @user_info['uid']
-      create_user unless User.find_by(id: session[:user_id])
+      # binding.irb
+      session[:user_email] = @user_info['info']['email']
+      create_user unless User.find_by(email: session[:user_email])
       redirect_to :root
     end
 
     def create_user
-      User.create(name: @user_info['info']['nickname'], email: @user_info['info']['email'], id: @user_info['uid'])
+      User.create(name: @user_info['info']['nickname'], email: @user_info['info']['email'])
     end
 
     def logout
-      session[:user_id] = nil
+      session[:user_email] = nil
       redirect_to :root
     end
   end

@@ -1,0 +1,12 @@
+ru:
+  web:
+    bulletins:
+      archive:
+        confirm: Вы уверены?
+        success: Объявление отправлено в архив
+      publish:
+        success: Объявление успешно опубликовано
+      reject:
+        confirm: Вы уверены?
+        success: Объявление отклонено
+    

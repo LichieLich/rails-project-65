@@ -23,9 +23,9 @@ table.table.table-hover.mb-5
               method: :patch, class: 'me-2 text-danger', form: { data: { turbo_confirm: t('bulletins.archive.confirm') } }
           - if current_user.admin?
             - if bulletin.may_reject?
-              = button_to t('bulletins.links.reject'), reject_bulletin_path(bulletin),
+              = button_to t('bulletins.links.reject'), reject_admin_bulletin_path(bulletin),
                 method: :patch, class: 'me-2', form: { data: { turbo_confirm: t('bulletins.reject.confirm') } }
             - if bulletin.may_publish?
-              = button_to t('bulletins.links.publish'), publish_bulletin_path(bulletin),
+              = button_to t('bulletins.links.publish'), publish_admin_bulletin_path(bulletin),
                 method: :patch, class: 'me-2', form: { data: { turbo_confirm: t('bulletins.publish.confirm') } }
 = paginate bulletins

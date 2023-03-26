@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Web
+module Web::Admin
   class CategoriesController < ApplicationController
     before_action do
       authorize Category

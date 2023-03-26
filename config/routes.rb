@@ -9,16 +9,19 @@ Rails.application.routes.draw do
     resources :bulletins, only: %i[index new create destroy show edit update] do
       member do
         patch :archive
-        patch :publish
-        patch :reject
         patch :send_to_moderation, as: 'moderation'
       end
     end
     get 'profile', to: 'bulletins#profile'
 
-    scope :admin, as: 'admin' do
+    namespace :admin, as: 'admin' do
       resources :categories, only: %i[index new create destroy edit update]
-      resources :bulletins, only: %i[show]
+      resources :bulletins, only: %i[show admin_index] do
+        member do
+          patch :publish
+          patch :reject
+        end
+      end
       get 'bulletins', to: 'bulletins#admin_index'
       get '/', to: 'bulletins#bulletins_under_moderation'
     end

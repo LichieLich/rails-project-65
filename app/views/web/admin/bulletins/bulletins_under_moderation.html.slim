@@ -4,5 +4,5 @@
       == render partial: 'web/admin/nav_panel', locals: { active_page: 'under_moderation' }
     .col-md-9
       h2 = t('bulletins.title.under_moderation')
-      == render partial: 'table', locals: { bulletins: @bulletins }
+      == render partial: 'web/bulletins/table', locals: { bulletins: @bulletins }
       = paginate @bulletins

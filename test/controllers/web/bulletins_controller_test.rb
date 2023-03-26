@@ -70,13 +70,13 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     patch archive_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).aasm_state == 'archived'
+    assert Bulletin.find(@bulletin.id).state == 'archived'
   end
 
   test 'should be sent to moderation' do
     patch moderation_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).aasm_state == 'under_moderation'
+    assert Bulletin.find(@bulletin.id).state == 'under_moderation'
   end
 end

@@ -14,7 +14,7 @@ class Bulletin < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, length: { maximum: 1000 }
 
-  aasm whiny_transitions: false do
+  aasm whiny_transitions: false, column: :state do
     state :draft, initial: true, display: 'Черновик'
     state :under_moderation, display: 'На модерации'
     state :published, display: 'Опубликовано'
@@ -43,7 +43,7 @@ class Bulletin < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    super & %w[title aasm_state]
+    super & %w[title state]
   end
 
   def self.ransackable_associations(auth_object = nil)

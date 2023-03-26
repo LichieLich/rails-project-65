@@ -32,22 +32,22 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should be published' do
-    @bulletin.aasm_state = 'under_moderation'
+    @bulletin.state = 'under_moderation'
     @bulletin.save
 
     patch publish_admin_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).aasm_state == 'published'
+    assert Bulletin.find(@bulletin.id).state == 'published'
   end
 
   test 'should be rejected' do
-    @bulletin.aasm_state = 'under_moderation'
+    @bulletin.state = 'under_moderation'
     @bulletin.save
 
     patch reject_admin_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).aasm_state == 'rejected'
+    assert Bulletin.find(@bulletin.id).state == 'rejected'
   end
 end

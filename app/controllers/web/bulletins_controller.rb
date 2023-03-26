@@ -8,7 +8,7 @@ module Web
 
     def index
       @q = Bulletin.includes(:image_attachment).ransack(params[:q])
-      @bulletins = @q.result.where(aasm_state: 'published').order(created_at: :desc).page(params[:page]).per(20)
+      @bulletins = @q.result.where(state: 'published').order(created_at: :desc).page(params[:page]).per(20)
     end
 
     def show
@@ -63,7 +63,7 @@ module Web
     end
 
     def bulletins_under_moderation
-      @bulletins = Bulletin.where(aasm_state: 'under_moderation').order(created_at: :desc).page(params[:page]).per(20)
+      @bulletins = Bulletin.where(state: 'under_moderation').order(created_at: :desc).page(params[:page]).per(20)
       render 'web/admin/bulletins/bulletins_under_moderation'
     end
 

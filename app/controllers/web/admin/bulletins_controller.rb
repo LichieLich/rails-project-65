@@ -12,7 +12,7 @@ module Web::Admin
     end
 
     def bulletins_under_moderation
-      @bulletins = Bulletin.where(aasm_state: 'under_moderation').order(created_at: :desc).page(params[:page]).per(20)
+      @bulletins = Bulletin.where(state: 'under_moderation').order(created_at: :desc).page(params[:page]).per(20)
     end
 
     def publish

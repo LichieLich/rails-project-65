@@ -6,8 +6,8 @@
         = f.label :title_cont, t('bulletins.search_form.title'), class: 'small form-text text-muted'
     .col-3
       .mb-3.form-group.select
-        = f.select(:aasm_state_eq, Bulletin.aasm.states.map(&:human_name), { include_blank: true }, class: 'form-control')
-        = f.label :aasm_state_eq, t('bulletins.search_form.status'), class: 'small form-text text-muted'
+        = f.select(:state_eq, Bulletin.aasm.states.map(&:human_name), { include_blank: true }, class: 'form-control')
+        = f.label :state_eq, t('bulletins.search_form.status'), class: 'small form-text text-muted'
     .col-3
       = f.submit t('bulletins.search_form.search_button'), class: 'btn btn-primary me-2'
       = link_to t('bulletins.search_form.reset_button'), url_for, class: 'btn btn-outline-primary'

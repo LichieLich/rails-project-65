@@ -19,6 +19,6 @@ end
   bulletin.image.attach(io: URI.parse(Faker::LoremFlickr.image).open, filename: 'image.jpg', content_type: 'image/jpg')
   bulletin.user = User.order(Arel.sql('RANDOM()')).first
   bulletin.category = Category.order(Arel.sql('RANDOM()')).first
-  bulletin.aasm_state = %w[draft under_moderation published rejected archived].sample
+  bulletin.state = %w[draft under_moderation published rejected archived].sample
   bulletin.save
 end

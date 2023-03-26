@@ -2,7 +2,7 @@
 
 module Web::Admin
   class BulletinsController < ApplicationController
-    before_action only: %i[admin_index bulletins_under_moderation publish reject archive] do
+    before_action only: %i[admin_index bulletins_under_moderation] do
       authorize Bulletin
     end
 

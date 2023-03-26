@@ -50,4 +50,11 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     assert Bulletin.find(@bulletin.id).state == 'rejected'
   end
+
+  test 'should be archived' do
+    patch archive_bulletin_url(@bulletin)
+    assert_redirected_to root_url
+
+    assert Bulletin.find(@bulletin.id).state == 'archived'
+  end
 end

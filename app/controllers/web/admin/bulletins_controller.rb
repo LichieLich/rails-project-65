@@ -2,7 +2,7 @@
 
 module Web::Admin
   class BulletinsController < ApplicationController
-    before_action only: %i[admin_index bulletins_under_moderation publish reject] do
+    before_action only: %i[admin_index bulletins_under_moderation publish reject archive] do
       authorize Bulletin
     end
 
@@ -27,6 +27,14 @@ module Web::Admin
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       @bulletin.reject!
+
+      redirect_back(fallback_location: :root, notice: t('.success'))
+    end
+
+    def archive
+      @bulletin = Bulletin.find(params[:id])
+      authorize @bulletin
+      @bulletin.archive!
 
       redirect_back(fallback_location: :root, notice: t('.success'))
     end

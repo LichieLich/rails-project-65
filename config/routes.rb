@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         member do
           patch :publish
           patch :reject
+          patch :archive
         end
       end
       get 'bulletins', to: 'bulletins#admin_index'

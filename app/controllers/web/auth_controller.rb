@@ -4,9 +4,8 @@ module Web
   class AuthController < Web::ApplicationController
     def callback
       @user_info = request.env['omniauth.auth']
-      user = User.find_by(email: @user_info['info']['email'])
-      create_user unless user
-      session[:user_id] = user.id
+      create_user unless User.find_by(email: @user_info['info']['email'])
+      session[:user_id] = User.find_by(email: @user_info['info']['email']).id
       redirect_to :root
     end
 

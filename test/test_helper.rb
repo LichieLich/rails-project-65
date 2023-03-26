@@ -33,10 +33,10 @@ class ActionDispatch::IntegrationTest
   end
 
   def signed_in?
-    session[:user_email].present? && current_user.present?
+    session[:user_id].present? && current_user.present?
   end
 
   def current_user
-    @current_user ||= User.find_by(email: session[:user_email])
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 end

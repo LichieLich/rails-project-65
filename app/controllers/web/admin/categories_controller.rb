@@ -8,17 +8,14 @@ module Web::Admin
 
     def index
       @categories = Category.all
-      render 'web/admin/categories/index'
     end
 
     def new
       @category = Category.new
-      render 'web/admin/categories/new'
     end
 
     def edit
       @category = Category.find(params[:id])
-      render 'web/admin/categories/edit'
     end
 
     def create

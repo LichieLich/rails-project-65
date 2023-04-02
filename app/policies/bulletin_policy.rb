@@ -22,19 +22,15 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def edit?
-    bulletin.user_id == user.id
+    owner?
   end
 
   def update?
-    edit?
+    owner?
   end
 
   def destroy?
-    edit?
-  end
-
-  def admin_index?
-    user.admin?
+    owner?
   end
 
   def profile?
@@ -42,7 +38,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def archive?
-    bulletin.user_id == user.id || user.admin?
+    owner? || user.admin?
   end
 
   def publish?
@@ -59,5 +55,11 @@ class BulletinPolicy < ApplicationPolicy
 
   def bulletins_under_moderation?
     user.admin?
+  end
+
+  private
+
+  def owner?
+    bulletin.user_id == user.id
   end
 end

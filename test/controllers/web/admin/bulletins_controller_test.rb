@@ -38,7 +38,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     patch publish_admin_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).state == 'published'
+    assert Bulletin.find(@bulletin.id).published?
   end
 
   test 'should be rejected' do
@@ -48,13 +48,13 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     patch reject_admin_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).state == 'rejected'
+    assert Bulletin.find(@bulletin.id).rejected?
   end
 
   test 'should be archived' do
     patch archive_bulletin_url(@bulletin)
     assert_redirected_to root_url
 
-    assert Bulletin.find(@bulletin.id).state == 'archived'
+    assert Bulletin.find(@bulletin.id).archived?
   end
 end

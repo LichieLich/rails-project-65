@@ -1,4 +1,4 @@
   nav.flex-column.nav-pills
-    nav_menu_item = link_to t('bulletins.admin_nav.links.under_moderation'), admin_path, class: "nav-link link-dark #{'active' if active_page == 'under_moderation'}"
-    nav_menu_item = link_to t('bulletins.admin_nav.links.admin_index'), admin_bulletins_path, class: "nav-link link-dark #{'active' if active_page == 'bulletins'}"
-    nav_menu_item = link_to t('bulletins.admin_nav.links.categories'), admin_categories_path, class: "nav-link link-dark #{'active' if active_page == 'categories'}"
+    nav_menu_item = link_to t('bulletins.admin_nav.links.under_moderation'), admin_path, class: ['nav-link','link-dark', active: active_page == 'under_moderation']
+    nav_menu_item = link_to t('bulletins.admin_nav.links.admin_index'), admin_bulletins_path, class: ['nav-link','link-dark', active: active_page == 'bulletins']
+    nav_menu_item = link_to t('bulletins.admin_nav.links.categories'), admin_categories_path, class: ['nav-link','link-dark', active: active_page == 'categories']

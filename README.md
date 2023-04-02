@@ -6,5 +6,13 @@
 
 [Demo app](https://rails-bulletin-board-ru.hexlet.app/)
 
+Makefile commands:
+- ci-setup: installation for your CI server
+- setup: installation for your local device
+- lint-code: rubocop check
+- lint-slim: slim linter for views
+- start: starts this app
+- test: runs all tests
+
 
 

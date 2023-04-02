@@ -2,7 +2,7 @@
 
 module Web
   class BulletinsController < ApplicationController
-    before_action only: %i[new admin_index profile bulletins_under_moderation] do
+    before_action only: %i[new profile] do
       authorize Bulletin
     end
 
@@ -55,18 +55,6 @@ module Web
       redirect_to root_path, notice: t('.success')
     end
 
-    def admin_index
-      @q = Bulletin.all.includes(:category).ransack(params[:q])
-      @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
-
-      render 'web/admin/bulletins/index'
-    end
-
-    def bulletins_under_moderation
-      @bulletins = Bulletin.where(state: 'under_moderation').order(created_at: :desc).page(params[:page]).per(20)
-      render 'web/admin/bulletins/bulletins_under_moderation'
-    end
-
     def profile
       @q = Bulletin.includes(:category).ransack(params[:q])
       @bulletins = @q.result.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
@@ -76,22 +64,6 @@ module Web
       @bulletin = Bulletin.find(params[:id])
       authorize @bulletin
       @bulletin.archive!
-
-      redirect_back(fallback_location: :root, notice: t('.success'))
-    end
-
-    def publish
-      @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-      @bulletin.publish!
-
-      redirect_back(fallback_location: :root, notice: t('.success'))
-    end
-
-    def reject
-      @bulletin = Bulletin.find(params[:id])
-      authorize @bulletin
-      @bulletin.reject!
 
       redirect_back(fallback_location: :root, notice: t('.success'))
     end

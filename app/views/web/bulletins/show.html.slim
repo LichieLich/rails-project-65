@@ -12,7 +12,7 @@
               = image_tag(@bulletin.image.variant(resize_to_fill: [400, 400]), class: 'img-thumbnail mb-2')
             br
             p = @bulletin.description
-            - if @bulletin.user.id == current_user&.id
+            - if policy(@bulletin).show?
               - if @bulletin.may_moderate?
                   = button_to t('bulletins.links.to_moderation'), moderation_bulletin_path(@bulletin), method: :patch, class: 'me-2'
               - if @bulletin.may_archive?

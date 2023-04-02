@@ -2,11 +2,13 @@
 
 module Web::Admin
   class BulletinsController < ApplicationController
-    before_action only: %i[admin_index bulletins_under_moderation] do
+    before_action only: %i[bulletins_under_moderation] do
       authorize Bulletin
     end
 
-    def admin_index
+    def index
+      admin_auth
+
       @q = Bulletin.all.includes(:category).ransack(params[:q])
       @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
     end
@@ -44,6 +46,10 @@ module Web::Admin
     # Only allow a list of trusted parameters through.
     def bulletin_params
       params.require(:bulletin).permit(:title, :description, :category_id, :image)
+    end
+
+    def admin_auth
+      raise Pundit::NotAuthorizedError unless current_user.admin?
     end
   end
 end
